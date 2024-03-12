@@ -1,9 +1,6 @@
 "use client";
 import { useState } from "react";
 import { account, ID } from "@/app/appwrite";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -21,16 +18,18 @@ const LoginPage = () => {
     login(email, password);
   };
 
- 
+  const logout = async () => {
+    await account.deleteSession("current");
+    setLoggedInUser(null);
+  };
 
   if (loggedInUser) {
     return (
       <div>
-       
-        <Header/>
-        <Navbar setLoggedInUser={setLoggedInUser}/>
-
-        <Footer/>
+        <p>Logged in as {loggedInUser.name}</p>
+        <button type="button" onClick={logout}>
+          Logout
+        </button>
       </div>
     );
   }
@@ -71,4 +70,3 @@ const LoginPage = () => {
 
 
 export default LoginPage;
-
