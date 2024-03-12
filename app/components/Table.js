@@ -24,7 +24,7 @@ function Table() {
                 </tr>
                 <tr>
                   <td>
-                    girish 2
+                    girish 3
                   </td>
                 </tr>
         </tbody>
