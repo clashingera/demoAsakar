@@ -1,0 +1,22 @@
+.header {
+    background: url('/img/banner.jpg') center/80% auto repeat-x; /* Center the image, cover 80% width, and repeat horizontally */
+    color: #fff;
+    text-align: center;
+    height: 110px;
+    padding: 10px;
+}
+.companyName {
+    margin: 13px;
+    
+}
+.companyAddress {
+    text-align: center;
+    color: #fff;
+    font-size: 15px; /* Reduce font size */
+}
+
+.companyAddress p {
+    margin: 1px 0; /* Reduce the gap between paragraphs */
+} 
+
+  

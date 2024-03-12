@@ -1,0 +1,62 @@
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.formContainer {
+  width: 40%; /* Adjust width as needed */
+}
+
+.inlineInputs {
+  display: flex;
+  flex-wrap: wrap; /* Allow inputs to wrap if container is narrow */
+}
+
+.inlineInputs div {
+  flex: 1; /* Each input should take equal space */
+  margin-right: 10px; /* Adjust margin between inputs */
+  margin-bottom: 10px; /* Adjust margin bottom as needed */
+}
+
+.logoContainer {
+  width: 20%; /* Adjust width as needed */
+}
+
+.logo {
+  max-width: 100%; /* Ensure logo does not exceed container width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.expenseTracker {
+  width: 30%; /* Adjust width as needed */
+}
+
+.expTracker {
+  width: 100%;
+  border-collapse: collapse; /* Ensure border-collapse */
+}
+
+.expTracker th,
+.expTracker td {
+  padding: 10px;
+  text-align: center;
+}
+
+.expTracker th {
+  background-color: #4caf50; /* Green color */
+  color: white;
+}
+
+.expTracker td {
+  background-color: #e8f5e9; /* Light green color */
+}
+
+.expTracker tr:nth-child(even) td {
+  background-color: #c8e6c9; /* Alternate light green color */
+}
+
+.expTracker tr:hover td {
+  background-color: #81c784; /* Hover color */
+}

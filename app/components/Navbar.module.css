@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #064600;
+    overflow: hidden;
+    height: 50px;
+}
+  
+.navbar a {
+font-size: 19px;
+  color: white;
+  text-decoration: none;
+  padding: 0px 20px;
+}
+
+.navbar a:hover {
+  cursor: pointer;
+  color: rgb(218, 218, 218);
+}
+
+.navbar a.logout {
+  margin-left: auto; 
+}
+  
