@@ -1,62 +1,185 @@
+
+
+
 .mainContent {
+  position: relative; 
+  z-index: 1; 
+  overflow: hidden; 
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px; /* Adjust margin as needed */
+  margin: 10px 0px 30px
+}
+
+.mainContent::before {
+  content: "";
+  position: absolute;
+  
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-image: url(/img/sugar-cane.jpg);
+  background-size: 33% 100%;
+  border-radius: 43px;
+  
+  z-index: -1;
+}
+
+.mainContent::after {
+  content: "";
+  position: absolute;
+  bottom: -50%; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place behind content */
 }
 
 .formContainer {
-  width: 40%; /* Adjust width as needed */
-}
-
-.inlineInputs {
-  display: flex;
-  flex-wrap: wrap; /* Allow inputs to wrap if container is narrow */
-}
-
-.inlineInputs div {
-  flex: 1; /* Each input should take equal space */
-  margin-right: 10px; /* Adjust margin between inputs */
-  margin-bottom: 10px; /* Adjust margin bottom as needed */
+  width: 45%;
+  background-color: rgba(255, 255, 255, 0.992);
+  font-size: 20px;
+  color: #000;
+  
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .logoContainer {
-  width: 20%; /* Adjust width as needed */
+  width: 20%; /* Set width for logo container */
+  display: flex;
+  align-items: center; /* Center the logo vertically */
+  justify-content: center; /* Center the logo horizontally */
+  z-index: -1;
 }
-
 .logo {
-  max-width: 100%; /* Ensure logo does not exceed container width */
-  height: auto; /* Maintain aspect ratio */
+  width: 80%; /* Make the logo fill its container */
+  border-radius: 50%; /* Make the logo circular */
+  display: block;
 }
-
 .expenseTracker {
-  width: 30%; /* Adjust width as needed */
+  width: 45%;
+  /* width: 100%;  */
+  background-color: rgba(255, 255, 255, 0.992);
+  font-size: 17px;
+  color: #000;
+  padding: 15px; /* Add padding for better spacing */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+/* Adding a local class to make selectors pure */
+.expenseForm input[type="text"],
+.expenseForm input[type="number"],
+.expenseForm input[type="date"],
+.expenseForm button {
+  margin: 0px;
+  font-size: 20px;
+  width: calc(100% - 20px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  box-shadow: 0 0 9px #dadada;
+  padding: 2px;
+  margin-bottom: 0px;
+  border-radius: 5px;
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Adjusted selectors with the local class */
+.expenseForm input[type="text"]:focus,
+.expenseForm input[type="number"]:focus,
+.expenseForm input[type="date"]:focus,
+.expenseForm button:hover {
+  outline: none;
+  box-shadow: 0 0 20px #dadada;
+}
+
+.expenseForm button:focus {
+  background-color: #ff5722; /* Change color on click */
+}
+.expenseForm button{
+    border: 1px solid #ffffff; 
+    margin: 2px;
+    width: calc(100% - 20px);
+    cursor: pointer;
+    color: #fff;
+    background-color: #4CAF50;
+}
 .expTracker {
   width: 100%;
-  border-collapse: collapse; /* Ensure border-collapse */
-}
-
-.expTracker th,
-.expTracker td {
-  padding: 10px;
+  border-collapse: separate;
+ 
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: auto;
+ 
+  border-radius: -24px;
   text-align: center;
+  
 }
 
+.expTracker table,.expTracker th,.expTracker td {
+  border: 0.1px solid #000;
+  
+}
+
+
+
+.expTracker th,.expTracker td {
+  padding: 17px;
+  font-size: 19px;
+  
+  
+}
 .expTracker th {
-  background-color: #4caf50; /* Green color */
-  color: white;
+  
+  color: #fff;
+  background-color: #498b4b;
+  
+
+}
+.expTracker td{
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.7);
+  
+} 
+
+
+@keyframes colorfulBackground {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 100% 50%;
+  }
 }
 
-.expTracker td {
-  background-color: #e8f5e9; /* Light green color */
+
+
+.formContainer label {
+  display: inline-block;
+  margin-bottom: 0.2rem;
+
+}
+.formContainer input {
+  display: inline-block;
+  margin-bottom: 0.2rem;
+}
+.inlineInputs {
+  display: flex;
+  justify-content: space-between;
+ }
+
+.inlineInputs label {
+  width: 30px; 
+  
 }
 
-.expTracker tr:nth-child(even) td {
-  background-color: #c8e6c9; /* Alternate light green color */
+.inlineInputs input {
+  width: 120px;
+  width: calc(100% - 20px);
+  
 }
 
-.expTracker tr:hover td {
-  background-color: #81c784; /* Hover color */
-}
+

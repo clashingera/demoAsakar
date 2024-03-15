@@ -1,12 +1,15 @@
 "use client";
 import { useState } from "react";
 import { account, ID } from "@/app/appwrite";
+import { useRouter } from "next/navigation";
 
-const LoginPage = () => {
+const LoginPage = ({getLoggedUser}) => {
+  const router = useRouter();
   const [loggedInUser, setLoggedInUser] = useState(null);
+  // const [loggedInUser, setLoggedInUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
 
   const login = async (email, password) => {
     const session = await account.createEmailSession(email, password);
@@ -21,19 +24,9 @@ const LoginPage = () => {
   const logout = async () => {
     await account.deleteSession("current");
     setLoggedInUser(null);
-  };
-
-  if (loggedInUser) {
-    return (
-      <div>
-        <p>Logged in as {loggedInUser.name}</p>
-        <button type="button" onClick={logout}>
-          Logout
-        </button>
-      </div>
-    );
+    getLoggedUser(loggedInUser);
   }
-
+   
   return (
     <div>
       <p>Not logged in</p>
@@ -50,18 +43,18 @@ const LoginPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input
+        {/* <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
+        /> */}
         <button type="button" onClick={() => login(email, password)}>
           Login
         </button>
-        <button type="button" onClick={register}>
+        {/* <button type="button" onClick={register}>
           Register
-        </button>
+        </button> */}
       </form>
     </div>
   );

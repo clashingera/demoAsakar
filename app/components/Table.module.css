@@ -1,28 +1,64 @@
-.myExpense {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .myExpense th,
-  .myExpense td {
+.myExpense{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 0.1px solid #00000078;
+  background-color: rgba(255, 255, 255, 0.171);
+  overflow-x: auto; /* Add horizontal scrollbar */
+  scrollbar-width: thin; /* Set scrollbar width */
+  scrollbar-color: #4CAF50 #e7eae7;
+}
+/* Customize scrollbar track */
+.myExpense::-webkit-scrollbar-track {
+    background-color: #71bb75; /* Scrollbar track color */
+    border-radius: 10px; /* Rounded corners for scrollbar track */
+}
+
+/* Customize scrollbar thumb */
+.myExpense::-webkit-scrollbar-thumb {
+    background-color: #4CAF50; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded corners for scrollbar thumb */
+}
+
+/* Change scrollbar thumb color on hover */
+.myExpense::-webkit-scrollbar-thumb:hover {
+    background-color: #1b391d; /* Scrollbar thumb color on hover */
+}
+
+.myExpense th {
     padding: 10px;
-    text-align: center;
-  }
-  
-  .myExpense th {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .myExpense td {
-    background-color: #e8f5e9;
-  }
-  
-  .myExpense tr:nth-child(even) td {
-    background-color: #c8e6c9;
-  }
-  
-  .myExpense tr:hover td {
-    background-color: #81c784;
-  }
-  
+    font-size: 20px;
+    color: #fff;
+    background-color: #488a4b;
+    
+
+}
+.myExpense td {
+    padding: 10px;
+    font-size: 20px;
+    color: #000000;
+    
+    
+
+}
+
+.myExpense tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 2.9);
+}
+
+.myExpense tr:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.myExpense button {
+    padding: 8px 15px; /* Adjust padding as needed for a bigger button */
+    background-color: #4CAF50; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    cursor: pointer;
+    margin-right: 5px; /* Adjust margin as needed */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.myExpense button.delete {
+  background-color: #ff4d4d; 
+}

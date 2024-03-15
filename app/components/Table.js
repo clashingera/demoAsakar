@@ -6,8 +6,10 @@ function Table() {
   return (
 
     <>
-        <table border="1" className={styles.myExpense}>
-          <tbody> 
+      <div className={styles.myExpense}>
+
+        <table border="1" className={styles.myExpense} >
+          <tbody > 
                 <tr>
                     <th colSpan="9">MY Expenses</th>
                 </tr>
@@ -23,12 +25,24 @@ function Table() {
                     <th>Actions</th>
                 </tr>
                 <tr>
+                  <td>12-12-2024</td>
+                  <td>sugar</td>
+                  <td>100</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>1000</td>
                   <td>
-                    dgdgdh
+                    <button className={styles.edit}>Edit</button>
+                    <button className={styles.delete} onClick={("delete krto ka lavdya🤡🤡?")}>Delete</button>
                   </td>
                 </tr>
-        </tbody>
+                
+            
+          </tbody>
         </table>
+      </div>
     </>
   );
 }
