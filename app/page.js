@@ -1,74 +1,45 @@
 "use client";
-import { useState } from "react";
-import { account, ID } from "@/app/appwrite";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Table from "./components/Table";
+import Form from "./components/Form";
+import styles  from './page.module.css';
+import LoginPage from "./login/page";
+import { useState } from "react";
 
-const LoginPage = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+const Home = () => {
 
-  const login = async (email, password) => {
-    const session = await account.createEmailSession(email, password);
-    setLoggedInUser(await account.get());
-  };
+  const [logInUser, setLoggedInUser] = useState(true);
 
-  const register = async () => {
-    await account.create(ID.unique(), email, password, name);
-    login(email, password);
-  };
+  const getLoggedUser = (loggedInUser) => {
+    setLoggedInUser(loggedInUser);
+  }
 
- 
-
-  if (loggedInUser) {
+  if (logInUser) {
     return (
+      <>
       <div>
-       
-        <Header/>
-        <Navbar setLoggedInUser={setLoggedInUser}/>
-
-        <Footer/>
+          <Header/>
+          <Navbar setLoggedInUser={setLoggedInUser}/>
+        <main  className={styles.main}>
+          <Form/>
+          <Table/>
+        </main>
+        
+          <Footer/>
       </div>
+      </>
     );
   }
 
   return (
     <div>
-      <p>Not logged in</p>
-      <form>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button type="button" onClick={() => login(email, password)}>
-          Login
-        </button>
-        <button type="button" onClick={register}>
-          Register
-        </button>
-      </form>
+      <p className={styles.ptag}>Not logged in</p>
+      <LoginPage getLoggedUser={getLoggedUser}/>
     </div>
   );
 };
 
-
-
-export default LoginPage;
+export default Home;
 

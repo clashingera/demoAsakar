@@ -4,9 +4,10 @@ import styles from './form.module.css';
 
 function Form() {
   return (
+   
     <div className={styles.mainContent}>
       <div className={styles.formContainer}>
-        <form id="expenseForm" className={styles.formContainer}>
+        <form id="expenseForm" className={styles.expenseForm} >
           <label htmlFor="description">Description:</label>
           <input type="text" id="description" name="description" defaultValue="sugar" required /><br />
           <label htmlFor="amount">Amount:</label>
@@ -50,8 +51,8 @@ function Form() {
               <th>Month</th>
             </tr>
             <tr>
-              <td id="todayExpense">0.00</td>
-              <td id="thisMonthExpense">0.00</td>
+              <td id="todayExpense">100</td>
+              <td id="thisMonthExpense">1000</td>
             </tr>
           </tbody>
         </table>

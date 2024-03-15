@@ -1,22 +1,33 @@
+
 .header {
-    background: url('/img/banner.jpg') center/80% auto repeat-x; /* Center the image, cover 80% width, and repeat horizontally */
+    background: url('/img/banner.jpg') center/cover repeat-x; /* Center the image, cover the container, and repeat horizontally */
     color: #fff;
     text-align: center;
-    height: 110px;
     padding: 10px;
 }
+
 .companyName {
-    margin: 13px;
-    
+    margin: 10px;
+    font-size: 24px; /* Adjust font size for smaller screens */
 }
+
 .companyAddress {
     text-align: center;
     color: #fff;
-    font-size: 15px; /* Reduce font size */
+    font-size: 16px; /* Adjust font size for smaller screens */
 }
 
 .companyAddress p {
-    margin: 1px 0; /* Reduce the gap between paragraphs */
-} 
+    margin: 5px 0; /* Reduce the gap between paragraphs */
+}
 
-  
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .companyName {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .companyAddress {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}

@@ -1,22 +1,86 @@
 .navbar {
-    background-color: #064600;
+  display: flex; /* Make the navbar flex container */
+    align-items: center; /* Align items vertically */
+    background-color: #288e2c;
     overflow: hidden;
     height: 50px;
 }
-  
-.navbar a {
-font-size: 19px;
+
+.navLink {
+  font-size: 19px;
   color: white;
-  text-decoration: none;
+  text-decoration:none;
   padding: 0px 20px;
 }
 
-.navbar a:hover {
+.navLink:hover {
   cursor: pointer;
+  
   color: rgb(218, 218, 218);
 }
 
-.navbar a.logout {
-  margin-left: auto; 
+.logout {
+  padding: 15px 20px;
+  background-color: #288e2c;
+  color: white;
+  border: none;
+  font-size: 19px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
 }
-  
+
+.logout:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.5s;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.logout:hover:before {
+  animation: glow 1s infinite alternate;
+}
+
+.logout span {
+  position: relative;
+  z-index: 1;
+}
+.logout:active {
+  background-color: #ff5722; 
+}
+
+
+@keyframes glow {
+  0% {
+      transform: scale(0.5);
+      opacity: 0.5;
+  }
+  100% {
+      transform: scale(1.5);
+      opacity: 0;
+  }
+}
+
+/* Responsive Navbar */
+
+@media screen and (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      height: auto;
+  }
+
+  .navLink,
+  .logout {
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+  }
+}

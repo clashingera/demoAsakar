@@ -1,0 +1,13 @@
+.main {
+    background-color: #7dca8f;
+    opacity: 0.8;
+    background: linear-gradient(135deg, #a4eda255 25%, transparent 25%) -11px 0/ 22px 22px, linear-gradient(225deg, #a4eda2 25%, transparent 25%) -11px 0/ 22px 22px, linear-gradient(315deg, #a4eda255 25%, transparent 25%) 0px 0/ 22px 22px, linear-gradient(45deg, #a4eda2 25%, #7dca8f 25%) 0px 0/ 22px 22px;
+    background-size: 600% 100%; 
+    animation: colorfulBackground 40s linear infinite; 
+    color: #fff;
+    padding: 20px;
+}
+
+
+
+
