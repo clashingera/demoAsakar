@@ -1,16 +1,14 @@
 "use client"
 import React from 'react';
-import { account, ID } from '@/app/appwrite';
 
 
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 
-function Navbar({setLoggedInUser}) {
+function Navbar() {
 
   const logout = async () => {
-    await account.deleteSession("current");
-    setLoggedInUser(null);
+    
   };
   
 

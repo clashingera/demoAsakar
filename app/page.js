@@ -1,27 +1,44 @@
 "use client";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Table from "./components/Table";
-import Form from "./components/Form";
+import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import Table from "./components/Table/Table";
+import Form from "./components/Form/Form";
 import styles  from './page.module.css';
-import LoginPage from "./login/page";
-import { useState } from "react";
+import { useState , useEffect } from "react";
+import { useDispatch } from "react-redux";
+import authService from "./appwrite/auth";
+import { login, logout } from "./store/authSlice";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
 
-  const [logInUser, setLoggedInUser] = useState(true);
+  // const [logInUser, setLoggedInUser] = useState(true);
 
-  const getLoggedUser = (loggedInUser) => {
-    setLoggedInUser(loggedInUser);
-  }
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  if (logInUser) {
-    return (
+    useEffect(() => {
+        authService
+            .getCurrentUser()
+            .then((userData) => {
+              console.log("user", userData)
+                if (userData) dispatch(login({ userData }));
+                else {
+                  dispatch(logout());
+                  router.push("/login")
+                }
+            })
+            .finally(() => setLoading(false));
+    }, [dispatch]);
+
+
+    return !loading ? (
       <>
       <div>
           <Header/>
-          <Navbar setLoggedInUser={setLoggedInUser}/>
+          <Navbar/>
         <main  className={styles.main}>
           <Form/>
           <Table/>
@@ -30,15 +47,10 @@ const Home = () => {
           <Footer/>
       </div>
       </>
+    ): (
+      <h1>loading...</h1>
     );
-  }
 
-  return (
-    <div>
-      <p className={styles.ptag}>Not logged in</p>
-      <LoginPage getLoggedUser={getLoggedUser}/>
-    </div>
-  );
 };
 
 export default Home;

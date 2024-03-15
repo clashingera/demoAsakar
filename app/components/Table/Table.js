@@ -35,11 +35,10 @@ function Table() {
                   <td>1000</td>
                   <td>
                     <button className={styles.edit}>Edit</button>
-                    <button className={styles.delete} onClick={("delete krto ka lavdya🤡🤡?")}>Delete</button>
+                    <button className={styles.delete}>Delete</button>
                   </td>
                 </tr>
                 
-            
           </tbody>
         </table>
       </div>
