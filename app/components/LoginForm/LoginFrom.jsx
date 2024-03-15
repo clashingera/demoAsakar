@@ -4,6 +4,7 @@ import {useDispatch } from 'react-redux';
 import authService from "@/app/appwrite/auth"
 import { login as authLogin } from '@/app/store/authSlice';
 import { useState } from 'react';
+import styles from './Login.module.css';
 
 function LoginFrom() {
 
@@ -37,27 +38,48 @@ function LoginFrom() {
     }
 
   return (
-    <div>
-      <h1>LOGIN</h1>
-      <form onSubmit={handelLogin} >
-        <input
-          type="email"
-          placeholder="Email"
-          value={data.email}
-          onChange={(e) => setData(p => ({...p, email : e.target.value}))}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={data.password}
-          onChange={(e) => setData(p => ({...p, password : e.target.value}))}
-        />
-        <button type='submit'>
-          Login
-        </button>
-      </form>
-      {errors && <p>{errors.message}</p>}       
-    </div>
+    <>
+    <div className={styles.loginbody}>
+
+<div className={styles.logocontainer}>
+    <img src="/img/logo.jpg" alt="logo"/>
+</div>
+
+<div className={styles.logincontainer}>
+  <h2 className={styles.logintitle}>Login</h2>
+
+   <form className={styles.loginform} onSubmit={handelLogin}  >
+        
+        <div className={styles.logininputgroup}>
+            <label for="username" className={styles.loginlabel}>Username</label>
+            <input type="email" id="username" name="username" className={styles.logininput} value={data.email} onChange={(e) => setData(p => ({...p, email : e.target.value}))}/> 
+        </div>
+
+        
+      
+        
+        <div className={styles.logininputgroup}>
+            <label for="password" className={styles.loginlabel}>Password</label>
+            <a href="#" id="forgotPasswordLink" className={styles.forgotpasswordlink}> | Forgot Password?</a>
+            <input type="password" id="password" name="password" className={styles.logininput} value={data.password} required onChange={(e) => setData(p => ({...p, password : e.target.value}))}/>
+        </div>
+
+
+      
+
+
+        <button type="submit" className={styles.loginbutton}>Log in</button>
+
+    </form>
+
+</div>
+
+    
+       
+</div>
+    </>
+    // {errors && <p>{errors.message}</p>}
+    
   )
 }
 
