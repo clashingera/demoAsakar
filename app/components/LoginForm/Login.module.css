@@ -1,0 +1,104 @@
+/* login-style.css */
+
+
+.loginbody {
+    font-family: 'Arial', sans-serif;
+    background: url('/img/login-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+.logocontainer {
+    position: fixed;
+    z-index: 2;
+    top:19vh;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    
+}
+
+.logocontainer img {
+    border-radius: 122px;
+    width: 160px;
+    height: auto;
+}
+
+.logincontainer {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 246px;
+    height: 320px;
+    position: absolute;
+    top: 30vh;
+    opacity: 0.8;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.logincontainer:hover {
+    background-color: rgba(255, 255, 255, 1); /* Normal background color on hover */
+    opacity: 1; /* Normal opacity on hover */
+}
+
+.logintitle {
+    font-size: 1.9rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 58px;
+    
+    color: #333;
+}
+
+.loginform {
+    display: flex;
+    flex-direction: column;
+}
+
+.logininputgroup {
+    margin-bottom: 15px;
+}
+
+.loginlabel {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.logininput {
+    width: 93%;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.loginbutton {
+    width: 100%;
+    padding: 16px;
+    background-color: #48bb78;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loginbutton:hover {
+    background-color: #38a169;
+}
+
+.forgotpasswordlink{
+    text-decoration: none;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px
+
+}
+.forgotpasswordlink:hover{
+    color: blue;
+}
