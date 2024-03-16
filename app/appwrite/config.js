@@ -1,29 +1,57 @@
-import conf from "../conf/conf"
-import { Client, Databases, Storage, Query, ID } from "appwrite";
+// import conf from "../conf/conf"
+import { Client, Databases, Query, ID } from "appwrite";
+import calculateOneMonthAgo from "./lib";
 
+const conf = {
+    appwriteUrl: "https://cloud.appwrite.io/v1",
+    appwriteProjectId: "65ee8d21c97a5316078a",
+    appwriteDatabaseId: "65ee929970240f2702c6",
+    appwriteCollectionId: "65eebb184f2885b3d495"
+}
 
 export class Service {
     client = new Client()
     databases;
-    bucket;
+    // bucket;
 
     constructor() {
-        this.client.setEndpoint(conf.appwriteUrl)
+        this.client
+            .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId)
+
         this.databases = new Databases(this.client)
-        this.bucket = new Storage(this.client)
+        // this.bucket = new Storage(this.client)
     }
 
-    async getPost(slug) {
+    async getDataHome() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1; 
+        const day = today.getDate();
+      
+        const dateQuery = [
+          Query.equal("date",  `${year}-${month.toString().length < 2 ? "0" : ""}${month}-${day}`)];
+
+        // queries.push(dateQuery);
+      console.log(`${year}-${month}-${day}`);
         try {
-            return await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
+          return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, dateQuery);
         } catch (error) {
-            console.log("Appwrite service :: getPost() :: ", error);
+          console.log("Appwrite service :: getPosts() :: ", error);
+          return false;
+        }
+      }
+      
+
+    async getDataDashboard(queries = [Query.equal("status", false)]) {
+        try {
+            return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
+        } catch (error) {
+            console.log("Appwrite service :: getPosts() :: ", error);
             return false
         }
-    }
-
-    async getPosts(queries = [Query.equal("status", "active")]) {
+    }  
+    async getDataHistroy(queries = [Query.equal("status", true)]) {
         try {
             return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
         } catch (error) {
@@ -32,14 +60,14 @@ export class Service {
         }
     }
 
-    async createPost({ description, amount, date, quantity, cgst, sgst, igst, total, slug, status}) {
+    async createPost({ description, amount, date, quantity, cgst, sgst, igst, total}) {
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
-                { 
-                    description, amount, date, quantity, cgst, sgst, igst, total, slug, status
+                ID.unique(),
+                {
+                    description, amount, date, quantity, CGST : cgst, SGST : sgst, IGST :  igst, total
                 }
             )
         } catch (error) {
@@ -48,14 +76,14 @@ export class Service {
         }
     }
 
-    async updatePost(slug, { description, amount, date, quantity, cgst, sgst, igst, total, slug, status }) {
+    async updatePost(id, { description, amount, date, quantity, cgst, sgst, igst, total }) {
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
-                { 
-                    description, amount, date, quantity, cgst, sgst, igst, total, slug, status, userId 
+                id,
+                {
+                    description, amount, date, quantity, cgst, sgst, igst, total
                 }
             )
         } catch (error) {
@@ -64,12 +92,18 @@ export class Service {
         }
     }
 
-    async deletePost(slug) {
+
+    
+
+    async updateStatus(id) {
         try {
-            await this.databases.deleteDocument(
+            await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
+                id,
+                {
+                    status: true
+                }
             )
             return true;
         } catch (error) {
@@ -78,40 +112,73 @@ export class Service {
         }
     }
 
+
+    async deleteOldDocuments() {
+        const oneMonthAgo = calculateOneMonthAgo();
+        const queries = [Query.lessThan("date", oneMonthAgo)];
+      
+        try {
+          const response = await this.databases.listDocuments(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            queries
+          );
+      
+          if (response && response.length > 0) {
+            const deletePromises = response.map((doc) =>
+              this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                doc.$id
+              )
+            );
+            await Promise.all(deletePromises);
+            console.log("Successfully deleted", response.length, "old documents");
+          } else {
+            console.log("No documents found older than one month");
+          }
+        } catch (error) {
+          console.error("Error deleting old documents:", error);
+        }
+      }
+      
+
+    
+
     // storage service
 
-    async uploadFile(file) {
-        try {
-            return await this.bucket.createFile(
-                conf.appwriteBucketId,
-                ID.unique(),
-                file
-            )
-        } catch (error) {
-            console.log("Appwrite service :: uploadFile() :: ", error);
-            return false
-        }
-    }
+    // async uploadFile(file) {
+    //     try {
+    //         return await this.bucket.createFile(
+    //             conf.appwriteBucketId,
+    //             ID.unique(),
+    //             file
+    //         )
+    //     } catch (error) {
+    //         console.log("Appwrite service :: uploadFile() :: ", error);
+    //         return false
+    //     }
+    // }
 
-    async deleteFile(fileId) {
-        try {
-            return await this.bucket.deleteFile(
-                conf.appwriteBucketId,
-                fileId
+    // async deleteFile(fileId) {
+    //     try {
+    //         return await this.bucket.deleteFile(
+    //             conf.appwriteBucketId,
+    //             fileId
 
-            )
-        } catch (error) {
-            console.log("Appwrite service :: deleteFile() :: ", error);
-            return false
-        }
-    }
+    //         )
+    //     } catch (error) {
+    //         console.log("Appwrite service :: deleteFile() :: ", error);
+    //         return false
+    //     }
+    // }
 
-    getFilePreview(fileId) {
-        return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
-            fileId
-        ).href
-    }
+    // getFilePreview(fileId) {
+    //     return this.bucket.getFilePreview(
+    //         conf.appwriteBucketId,
+    //         fileId
+    //     ).href
+    // }
 }
 
 

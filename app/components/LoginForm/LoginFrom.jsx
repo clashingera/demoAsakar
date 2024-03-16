@@ -38,6 +38,29 @@ function LoginFrom() {
     }
 
   return (
+<<<<<<< HEAD
+    <div>
+      <h1>LOGIN</h1>
+      <form onSubmit={handelLogin} >
+        <input
+          type="email"
+          placeholder="Email"
+          value={data.email}
+          onChange={(e) => setData(p => ({...p, email : e.target.value}))}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={data.password}
+          onChange={(e) => setData(p => ({...p, password : e.target.value}))}
+        />
+        <button type='submit'>
+          Login
+        </button>
+      </form>
+      {errors && <p>{errors}</p>}       
+    </div>
+=======
     <>
     <div className={styles.loginbody}>
 
@@ -80,6 +103,7 @@ function LoginFrom() {
     </>
     // {errors && <p>{errors.message}</p>}
     
+>>>>>>> edbf1871e518f3c75bed1333fc24fe1b35547de3
   )
 }
 

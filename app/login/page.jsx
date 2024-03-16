@@ -1,12 +1,16 @@
 "use client";
-import { useState } from "react";
+import { Suspense} from "react";
 import LoginFrom from "../components/LoginForm/LoginFrom";
+import Loading from "./loading";
+
 
 const LoginPage = () => {
  
   return (
     <>
+    <Suspense fallback={<Loading/>}>
     <LoginFrom/>
+    </Suspense>
     </>
   );
 };
