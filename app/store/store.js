@@ -6,7 +6,6 @@ const store = configureStore({
     reducer: {
         auth: authSlice,
         table : tableSlice
-
     }
 })
 

@@ -3,15 +3,11 @@ import React from "react";
 import styles from "./form.module.css";
 import postService from "@/app/appwrite/config";
 import { useState } from "react";
-// import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
-import { setTableData } from "@/app/store/tableSlice";
+import { useRouter } from "next/navigation";
 
+function Form({setTableData}) {
 
-function Form() {
-
-  // const router = useRouter();
-  const dispatch = useDispatch();
+  const router = useRouter();
 
   const [description, setDescription] = useState("sugar");
   const [amount, setAmount] = useState(1);
@@ -21,6 +17,8 @@ function Form() {
   const [igst, setIgst] = useState(2.5);
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   // const [total, setTotal] = useState(0);
+
+  
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -68,8 +66,8 @@ function Form() {
       date,
       total: totalAmount(),
     });
-
-    dispatch(setTableData(response))
+    setTableData((pData) => ([...pData, response]));
+    
     console.log(response);
     // router.refresh();
     // console.log('Submitted data:', {

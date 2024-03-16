@@ -12,8 +12,8 @@ import { login, logout } from "./store/authSlice";
 import { useRouter } from "next/navigation";
 import postService from '@/app/appwrite/config'
 import Loader from "./components/Loader/Loader";
-import { useSelector } from "react-redux";
-import { setTableData } from "@/app/store/tableSlice";
+// import { useSelector } from "react-redux";
+// import { setTableData } from "@/app/store/tableSlice";
 
 const Home = () => {
 
@@ -21,8 +21,8 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
   const [loadingTable, setLoadingTable] = useState(true);
-  // const [tableData, setTableData] = useState([]);
-  const tableData = useSelector((state) => state.table.tableData);
+  const [tableData, setTableData] = useState([]);
+  // const tableData = useSelector((state) => state.table.tableData);
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -56,7 +56,7 @@ const Home = () => {
         <Header />
         <Navbar />
         <main className={styles.main}>
-          <Form />
+          <Form setTableData = {setTableData} />
           {
             loadingTable ? (
               <Loader type="TailSpin" color="#0652dd" height={100} width={100} />
