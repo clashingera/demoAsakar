@@ -1,5 +1,7 @@
 "use client"
 import React from 'react';
+import authService from '@/app/appwrite/auth';
+import { useRouter } from 'next/navigation'
 
 
 import Link from 'next/link';
@@ -7,8 +9,11 @@ import styles from './Navbar.module.css';
 
 function Navbar() {
 
+  const router = useRouter();
+
   const logout = async () => {
-    
+    await authService.logout();
+    router.push('/login')
   };
   
 

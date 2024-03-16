@@ -56,7 +56,7 @@ function LoginFrom() {
           Login
         </button>
       </form>
-      {errors && <p>{errors.message}</p>}       
+      {errors && <p>{errors}</p>}       
     </div>
   )
 }
