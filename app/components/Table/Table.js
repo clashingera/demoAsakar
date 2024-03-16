@@ -1,8 +1,35 @@
 "use client";
 import React from "react";
 import styles from "./Table.module.css";
+import postService from '@/app/appwrite/config'
+
+function updateObjectById(array, idToUpdate, updatedProperties) {
+  const indexToUpdate = array.findIndex(obj => obj.id === idToUpdate);
+  if (indexToUpdate !== -1) {
+      // Update the object's properties
+      array[indexToUpdate] = { ...array[indexToUpdate], ...updatedProperties };
+  }
+  return array;
+}
 
 function Table({ tableData }) {
+
+  const handleDelete = async (data) => {
+
+    // let newTableData = tableData;
+
+    // newTableData = updateObjectById(newTableData, data, { status: true });
+
+    // console.log("NEW -->", newTableData)
+
+    // setTableData(newTableData);
+
+    const response = await postService.updateStatus(data);
+
+   console.log("DELETE RES : ", response)
+
+  }
+
   return (
     <>
       {tableData ? (
@@ -36,7 +63,7 @@ function Table({ tableData }) {
                     <td>{data.total}</td>
                     <td>
                       <button className={styles.edit}>Edit</button>
-                      <button className={styles.delete}>Delete</button>
+                      <button className={styles.delete} onClick={() => handleDelete(data.$id)}>Delete</button>
                     </td>
                   </tr>
                 ))}

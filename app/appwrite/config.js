@@ -30,7 +30,9 @@ export class Service {
         const day = today.getDate();
       
         const dateQuery = [
-          Query.equal("date",  `${year}-${month.toString().length < 2 ? "0" : ""}${month}-${day}`)];
+          Query.equal("date",  `${year}-${month.toString().length < 2 ? "0" : ""}${month}-${day}`),
+          Query.equal("status", false)
+        ];
 
         // queries.push(dateQuery);
       console.log(`${year}-${month}-${day}`);
