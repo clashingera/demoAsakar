@@ -1,6 +1,6 @@
 "use client"
 import postService from '@/app/appwrite/config'
-import  Style   from './DeleteButton.module.css';
+import  Style   from './deletebutton.module.css';
 const DeleteButton = () => {
     const handleDelete = async () => {
         const confirmed = window.confirm("Delete Old Documents Permanently?");
