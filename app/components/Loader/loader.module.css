@@ -1,0 +1,17 @@
+.customloader {
+    height:4px;
+    width:100%;
+    background:
+     linear-gradient(#2CA03F 0 0),
+     linear-gradient(#2CA03F 0 0),
+     #7EE749;
+   background-size: 60% 100%;
+   background-repeat: no-repeat;
+   animation: p6 3s infinite;
+ }
+ 
+ @keyframes p6 {
+   0%   {background-position:-150% 0,-150% 0}
+   66%  {background-position: 250% 0,-150% 0}
+   100% {background-position: 250% 0, 250% 0}
+ }

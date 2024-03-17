@@ -1,13 +1,20 @@
-.dbstyle{
+
+  
+  .deletebutton {
     padding: 8px 15px; /* Adjust padding as needed for a bigger button */
-    background-color: #e55050; /* Button background color */
+    background-color: #ff4d4d; /* Button background color */
     color: #fff; /* Button text color */
     border: none;
     cursor: pointer;
-    margin-right: 5px; /* Adjust margin as needed */
-    border-radius: 5px; /* Rounded corners */
+    margin-left: 5px; /* Adjust margin as needed */
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease; /* Rounded corners */
 }
+  .deletebutton:hover {
+    background-color: #e60000;
+  }
 
-.dbstyle:hover{
-    background-color: #891111;
-}
+  

@@ -1,6 +1,4 @@
 
-
-
 .mainContent {
   position: relative; 
   z-index: 1; 
@@ -85,8 +83,6 @@
   border-radius: 5px;
   color: #000;
   transition: background-color 0.3s ease, color 0.3s ease;
-  padding: 4px;
-  padding-left: 8px;
 }
 
 /* Adjusted selectors with the local class */
@@ -95,22 +91,19 @@
 .expenseForm input[type="date"]:focus,
 .expenseForm button:hover {
   outline: none;
-  box-shadow: 0 0 4px #68c760;
+  box-shadow: 0 0 20px #dadada;
 }
 
-/* .expenseForm button:focus {
-  background-color: #ff5722; 
-} */
+.expenseForm button:active {
+  background-color: #024f19; /* Change color on click */
+}
 .expenseForm button{
     border: 1px solid #ffffff; 
     margin: 2px;
     width: calc(100% - 20px);
     cursor: pointer;
     color: #fff;
-    padding-top: 4px;
-    padding-bottom: 4px;
     background-color: #4CAF50;
-    margin-top: 16px;
 }
 .expTracker {
   width: 100%;

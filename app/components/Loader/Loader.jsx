@@ -1,8 +1,9 @@
 import React from 'react'
-
+import Style from './loader.module.css'
 function Loader() {
   return (
-    <div>Loading...</div>
+    
+    <div className={Style.customloader}></div>
   )
 }
 

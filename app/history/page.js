@@ -22,14 +22,28 @@ export default function History() {
 
   return (
     <>
-      <Navbar />
+    
+    <Navbar />
+    <h1>History</h1>
+    {loadingTable && <Loader />}
+    
+    <DeleteButton />
+    
+    {/* Table or "no data" message */}
+    {!loadingTable && (tableData ? <Table tableData={tableData} tag="history" /> : <p>no data</p>)}
+  
+
+
+
+
+      {/* <Navbar />
       <DeleteButton />
       <h1>History</h1>
       {!loadingTable ? (
         <Table tableData={tableData} tag="history" />
       ) : (
         <p></p>
-      )}
+      )} */}
     </>
   );
 }
