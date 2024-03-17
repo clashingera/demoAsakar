@@ -17,6 +17,7 @@ function Form({setTableData}) {
   const [igst, setIgst] = useState(2.5);
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   // const [total, setTotal] = useState(0);
+  const [isSubmmiting, setIsSubmmiting] = useState(false);
 
   
 
@@ -56,6 +57,8 @@ function Form({setTableData}) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setIsSubmmiting(true);
+
     const response = await postService.createPost({
       description,
       amount,
@@ -66,9 +69,13 @@ function Form({setTableData}) {
       date,
       total: totalAmount(),
     });
-    setTableData((pData) => ([...pData, response]));
+    if(response){
+      setTableData((pData) => ([...pData, response]));
+      setIsSubmmiting(false);
+    }else{
+      console.log(response);
+    }
     
-    console.log(response);
     // router.refresh();
     // console.log('Submitted data:', {
     //   description,
@@ -182,7 +189,7 @@ function Form({setTableData}) {
             </div>
           </div>
           <button className={styles.submit} type="submit">
-            Add Expense
+            {`${!isSubmmiting ? "Add Expense" : "Proccesing...."}`} 
           </button>
         </form>
       </div>

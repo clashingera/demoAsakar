@@ -117,8 +117,9 @@ export class Service {
 
     async deleteOldDocuments() {
         const oneMonthAgo = calculateOneMonthAgo();
-        const queries = [Query.lessThan("date", oneMonthAgo)];
-      
+        const queries = [Query.lessThan("$date", oneMonthAgo)];
+      // console.log("crested : ", createdAt)
+      // console.log("oneMonth : ", oneMonthAgo)
         try {
           const response = await this.databases.listDocuments(
             conf.appwriteDatabaseId,

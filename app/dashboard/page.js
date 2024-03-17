@@ -10,7 +10,7 @@ import Loader from "../components/Loader/Loader";
 export default function Dashboard() {
 
   const [loadingTable, setLoadingTable] = useState(true);
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState(null);
 
   useEffect(() => {
     postService.getDataDashboard()
@@ -26,13 +26,7 @@ export default function Dashboard() {
     <Navbar/>
  <h1>Dashboard</h1>  
  {/* laudya filter chi butoon banvas */}
- {
-            loadingTable ? (
-              <Loader type="TailSpin" color="#0652dd" height={100} width={100} />
-            ) :(
-              tableData ? <Table tableData={tableData} /> : <p>no data</p>
-            )
-          }
+ {!loadingTable ? <Table tableData={tableData} tag="dashboard" /> : <p></p>}
     </>
    
   );

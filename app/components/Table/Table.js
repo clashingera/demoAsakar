@@ -1,35 +1,17 @@
 "use client";
 import React from "react";
 import styles from "./Table.module.css";
-import postService from '@/app/appwrite/config'
+import postService from "@/app/appwrite/config";
+import { useRouter } from "next/navigation";
+import { Audio } from "react-loader-spinner";
+import DeleteButtonTable from "../DeleteButton/DeleteButtonTable";
 
-function updateObjectById(array, idToUpdate, updatedProperties) {
-  const indexToUpdate = array.findIndex(obj => obj.id === idToUpdate);
-  if (indexToUpdate !== -1) {
-      // Update the object's properties
-      array[indexToUpdate] = { ...array[indexToUpdate], ...updatedProperties };
-  }
-  return array;
-}
 
-function Table({ tableData }) {
 
-  const handleDelete = async (data) => {
+function Table({ tableData, tag}) {
+  const router = useRouter();
 
-    // let newTableData = tableData;
-
-    // newTableData = updateObjectById(newTableData, data, { status: true });
-
-    // console.log("NEW -->", newTableData)
-
-    // setTableData(newTableData);
-
-    const response = await postService.updateStatus(data);
-
-   console.log("DELETE RES : ", response)
-
-  }
-
+  
   return (
     <>
       {tableData ? (
@@ -48,12 +30,14 @@ function Table({ tableData }) {
                 <th>SGST</th>
                 <th>IGST</th>
                 <th>Total Amount (Rs.)</th>
-                <th>Actions</th>
+                {tag === "dashboard" && <th>Actions</th>}
               </tr>
               {tableData &&
                 tableData.map((data) => (
                   <tr key={data.$id}>
-                    <td>{data.date.slice(0, 10)}</td>
+                    <td>
+                      {new Date(data.$createdAt).toISOString().slice(0, 10)}
+                    </td>
                     <td>{data.description}</td>
                     <td>{data.amount}</td>
                     <td>{data.quantity}</td>
@@ -61,17 +45,31 @@ function Table({ tableData }) {
                     <td>{data.SGST}</td>
                     <td>{data.IGST}</td>
                     <td>{data.total}</td>
-                    <td>
-                      <button className={styles.edit}>Edit</button>
-                      <button className={styles.delete} onClick={() => handleDelete(data.$id)}>Delete</button>
-                    </td>
+                    {tag === "dashboard" && (
+                      <td>
+                        <button className={styles.edit}>Edit</button>
+                        { tag === "dashboard"  && <DeleteButtonTable id={data.$id} tag= {tag} />}
+                        { tag === "history"  && <RestoreButtonTable id={data.$id} tag= {tag} />}
+
+                      </td>
+                    )}
                   </tr>
                 ))}
             </tbody>
           </table>
         </div>
       ) : (
-        <p style={{paddingLeft : "20px", marginTop : "100px"}}>loging</p>
+        <div style={{marginLeft : "590px", marginTop : "250px"}}>
+        <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="green"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+        </div>
       )}
     </>
   );

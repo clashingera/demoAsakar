@@ -1,0 +1,13 @@
+.dbstyle{
+    padding: 8px 15px; /* Adjust padding as needed for a bigger button */
+    background-color: #e55050; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    cursor: pointer;
+    margin-right: 5px; /* Adjust margin as needed */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.dbstyle:hover{
+    background-color: #891111;
+}
