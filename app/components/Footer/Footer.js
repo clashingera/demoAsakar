@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './Footer.module.css';
 
-
+// comment
 function Footer() {
   return (
-
     <>
 <footer id="dk-footer" className={styles.dkfooter}>
     <div className="container">
