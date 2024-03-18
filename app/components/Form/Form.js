@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./form.module.css";
 import postService from "@/app/appwrite/config";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 function Form({setTableData}) {
@@ -19,7 +19,60 @@ function Form({setTableData}) {
   // const [total, setTotal] = useState(0);
   const [isSubmmiting, setIsSubmmiting] = useState(false);
 
+  const [totalToday, setTotlToday] = useState(0);
+  const [totalMonth, setTotlMonth] = useState(0);
+
+  useEffect(() => {
+
+    postService.getDataHome().then((res) => {
+      const totalAmount = res.documents.reduce((total, expense) => total + parseFloat(expense.total), 0);
+      setTotlToday(totalAmount.toFixed(2))
+    })
+
+    postService.getDataDashboard().then((res) => {
+      const currentDate = new Date();
+
+      // Get the current month and year
+      const currentMonth = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+      const currentYear = currentDate.getFullYear();
   
+      // Filter expenses for the current month and year
+      const currentMonthExpenses = res.documents.filter(expense => {
+        const expenseDate = new Date(expense.date);
+        const expenseMonth = expenseDate.getMonth() + 1;
+        const expenseYear = expenseDate.getFullYear();
+        return expenseMonth === currentMonth && expenseYear === currentYear;
+      });
+  
+      // Calculate the total amount spent in the current month
+      const totalAmount = currentMonthExpenses.reduce((total, expense) => total + parseFloat(expense.total), 0);
+  
+      setTotlMonth(totalAmount.toFixed(2)); // Return total amount rounded to 2 decimal places
+    })
+    
+  },[isSubmmiting])
+
+  // const getCurrentMonthTotal = (expenses) => {
+  //   // Get the current date
+  //   const currentDate = new Date();
+
+  //   // Get the current month and year
+  //   const currentMonth = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+  //   const currentYear = currentDate.getFullYear();
+
+  //   // Filter expenses for the current month and year
+  //   const currentMonthExpenses = expenses.filter(expense => {
+  //     const expenseDate = new Date(expense.date);
+  //     const expenseMonth = expenseDate.getMonth() + 1;
+  //     const expenseYear = expenseDate.getFullYear();
+  //     return expenseMonth === currentMonth && expenseYear === currentYear;
+  //   });
+
+  //   // Calculate the total amount spent in the current month
+  //   const totalAmount = currentMonthExpenses.reduce((total, expense) => total + parseFloat(expense.total), 0);
+
+  //   return totalAmount.toFixed(2); // Return total amount rounded to 2 decimal places
+  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -205,12 +258,12 @@ function Form({setTableData}) {
               <th colSpan="2">Expense Tracker</th>
             </tr>
             <tr>
-              <th>Todays</th>
-              <th>Month</th>
+              <th>TODAY</th>
+              <th>MONTH</th>
             </tr>
             <tr>
-              <td id="todayExpense">100</td>
-              <td id="thisMonthExpense">1000</td>
+              <td id="todayExpense">{totalToday}</td>
+              <td id="thisMonthExpense">{totalMonth}</td>
             </tr>
           </tbody>
         </table>

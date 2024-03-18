@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import postService from '@/app/appwrite/config'
 import Loader from "../components/Loader/Loader";
 import Style from "./page.module.css"
+import FilterButton from "../components/FilterButton/FilterButton";
+import JsonToExcel from "../components/DownloadButton/DownloadButton";
 
 export default function Dashboard() {
 
@@ -24,18 +26,10 @@ export default function Dashboard() {
   return (
     <>
     <Navbar/>
-
     <div className={Style.filter}>
-      <h1>Dashboard Filter</h1>
-      <label htmlFor="startDate">Start Date:</label>
-      <input type="date" id="startDate" />
-      <label htmlFor="endDate">End Date:</label>
-      <input type="date" id="endDate" />
-      <button className={Style.button}>Filter</button>
-      <button className={Style.button}>Download Report</button>
+    <JsonToExcel jsonData={tableData} fileName={new Date().toISOString().slice(0,10)} Style={Style} />
+    <FilterButton Style={Style} setTableData={setTableData} />
     </div>
-
-
   
  {/* laudya filter chi butoon banvas */}
  {!loadingTable ? <Table tableData={tableData} tag="dashboard" setTableData={setTableData} /> : <p></p>}

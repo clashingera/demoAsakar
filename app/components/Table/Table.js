@@ -7,6 +7,8 @@ import { Audio } from "react-loader-spinner";
 import DeleteButtonTable from "../DeleteButton/DeleteButtonTable";
 import RestoreButtonTable from "../RestoreButtonTable/RestoreButtonTable";
 import { usePathname } from "next/navigation";
+import EditButton from "../EditButton/EditButton";
+import FormDialog from "../Cart/Cart";
 
 function Table({ tableData, tag, setTableData }) {
   const router = useRouter();
@@ -35,9 +37,7 @@ function Table({ tableData, tag, setTableData }) {
               {tableData.length !== 0 ? (
                 tableData.map((data) => (
                   <tr key={data.$id}>
-                    <td>
-                      {new Date(data.date).toISOString().slice(0, 10)}
-                    </td>
+                    <td>{new Date(data.date).toISOString().slice(0, 10)}</td>
                     <td>{data.description}</td>
                     <td>{data.amount}</td>
                     <td>{data.quantity}</td>
@@ -46,21 +46,24 @@ function Table({ tableData, tag, setTableData }) {
                     <td>{data.IGST}</td>
                     <td>{data.total}</td>
                     <td>
-                        {tag === "dashboard" && <button className={styles.edit}>Edit</button>}
-                        {tag === "dashboard" && (
-                          <DeleteButtonTable
-                            id={data.$id}
-                            tag={tag}
-                            setTableData={setTableData}
-                          />
-                          )}{tag === "history" && (
-                          <RestoreButtonTable
-                            id={data.$id}
-                            tag={tag}
-                            setTableData={setTableData}
-                          />
-                          )}
-                      </td>
+                      {tag === "dashboard" && (
+                        <FormDialog styles={styles}  data={data} setTableData={setTableData}/>
+                      )}
+                      {tag === "dashboard" && (
+                        <DeleteButtonTable
+                          id={data.$id}
+                          tag={tag}
+                          setTableData={setTableData}
+                        />
+                      )}
+                      {tag === "history" && (
+                        <RestoreButtonTable
+                          id={data.$id}
+                          tag={tag}
+                          setTableData={setTableData}
+                        />
+                      )}
+                    </td>
                   </tr>
                 ))
               ) : (

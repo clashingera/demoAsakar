@@ -38,7 +38,6 @@ function LoginFrom() {
     }
 
   return (
-<<<<<<< HEAD
     <div>
       <h1>LOGIN</h1>
       <form onSubmit={handelLogin} >
@@ -60,50 +59,48 @@ function LoginFrom() {
       </form>
       {errors && <p>{errors}</p>}       
     </div>
-=======
-    <>
-    <div className={styles.loginbody}>
+//     <>
+//     <div className={styles.loginbody}>
 
-<div className={styles.logocontainer}>
-    <img src="/img/logo.jpg" alt="logo"/>
-</div>
+// <div className={styles.logocontainer}>
+//     <img src="/img/logo.jpg" alt="logo"/>
+// </div>
 
-<div className={styles.logincontainer}>
-  <h2 className={styles.logintitle}>Login</h2>
+// <div className={styles.logincontainer}>
+//   <h2 className={styles.logintitle}>Login</h2>
 
-   <form className={styles.loginform} onSubmit={handelLogin}  >
+//    <form className={styles.loginform} onSubmit={handelLogin}  >
         
-        <div className={styles.logininputgroup}>
-            <label for="username" className={styles.loginlabel}>Username</label>
-            <input type="email" id="username" name="username" className={styles.logininput} value={data.email} onChange={(e) => setData(p => ({...p, email : e.target.value}))}/> 
-        </div>
+//         <div className={styles.logininputgroup}>
+//             <label for="username" className={styles.loginlabel}>Username</label>
+//             <input type="email" id="username" name="username" className={styles.logininput} value={data.email} onChange={(e) => setData(p => ({...p, email : e.target.value}))}/> 
+//         </div>
 
         
       
         
-        <div className={styles.logininputgroup}>
-            <label for="password" className={styles.loginlabel}>Password</label>
-            <a href="#" id="forgotPasswordLink" className={styles.forgotpasswordlink}> | Forgot Password?</a>
-            <input type="password" id="password" name="password" className={styles.logininput} value={data.password} required onChange={(e) => setData(p => ({...p, password : e.target.value}))}/>
-        </div>
+//         <div className={styles.logininputgroup}>
+//             <label for="password" className={styles.loginlabel}>Password</label>
+//             <a href="#" id="forgotPasswordLink" className={styles.forgotpasswordlink}> | Forgot Password?</a>
+//             <input type="password" id="password" name="password" className={styles.logininput} value={data.password} required onChange={(e) => setData(p => ({...p, password : e.target.value}))}/>
+//         </div>
 
 
       
 
 
-        <button type="submit" className={styles.loginbutton}>Log in</button>
+//         <button type="submit" className={styles.loginbutton}>Log in</button>
 
-    </form>
+//     </form>
 
-</div>
+// </div>
 
     
        
-</div>
-    </>
+// </div>
+//     </>
     // {errors && <p>{errors.message}</p>}
     
->>>>>>> edbf1871e518f3c75bed1333fc24fe1b35547de3
   )
 }
 
