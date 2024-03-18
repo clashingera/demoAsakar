@@ -31,7 +31,8 @@ export class Service {
       
         const dateQuery = [
           Query.equal("date",  `${year}-${month.toString().length < 2 ? "0" : ""}${month}-${day}`),
-          Query.equal("status", false)
+          Query.equal("status", false),
+          Query.orderDesc("date")
         ];
 
         // queries.push(dateQuery);
@@ -45,7 +46,7 @@ export class Service {
       }
       
 
-    async getDataDashboard(queries = [Query.equal("status", false)]) {
+    async getDataDashboard(queries = [Query.equal("status", false) , Query.orderDesc("date")]) {
         try {
             return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
         } catch (error) {
@@ -53,7 +54,7 @@ export class Service {
             return false
         }
     }  
-    async getDataHistroy(queries = [Query.equal("status", true)]) {
+    async getDataHistroy(queries = [Query.equal("status", true) , Query.orderDesc("date")]) {
         try {
             return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
         } catch (error) {
@@ -97,14 +98,14 @@ export class Service {
 
     
 
-    async updateStatus(id) {
+    async updateStatus(id, newStatus) {
         try {
             await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 id,
                 {
-                    status: true
+                    status: newStatus
                 }
             )
             return true;

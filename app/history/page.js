@@ -5,7 +5,7 @@ import Table from "../components/Table/Table";
 import { useEffect, useState } from "react";
 import postService from "@/app/appwrite/config";
 import Loader from "../components/Loader/Loader";
-import {CirclesWithBar} from "react-loader-spinner"
+import {Audio} from "react-loader-spinner"
 
 export default function History() {
   const [loadingTable, setLoadingTable] = useState(true);
@@ -25,12 +25,12 @@ export default function History() {
     
     <Navbar />
     <h1>History</h1>
-    {loadingTable && <Loader />}
+    {/* {loadingTable && <Loader />} */}
     
     <DeleteButton />
     
     {/* Table or "no data" message */}
-    {!loadingTable && (tableData ? <Table tableData={tableData} tag="history" /> : <p>no data</p>)}
+    {!loadingTable &&  <Table tableData={tableData} tag="history" setTableData={setTableData}/>}
   
 
 

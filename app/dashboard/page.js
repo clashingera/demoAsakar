@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   
  {/* laudya filter chi butoon banvas */}
- {!loadingTable ? <Table tableData={tableData} tag="dashboard" /> : <p></p>}
+ {!loadingTable ? <Table tableData={tableData} tag="dashboard" setTableData={setTableData} /> : <p></p>}
     </>
    
   );
