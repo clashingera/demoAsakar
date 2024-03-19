@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import postService from "@/app/appwrite/config"; // Assuming you have configured your Appwrite service
+import postService from "@/app/_appwrite/config"; // Assuming you have configured your Appwrite service
 import { useState } from 'react';
 
 export default function DeleteObjectsNotInCurrentMonth() {

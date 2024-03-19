@@ -1,30 +1,23 @@
 import React from 'react';
 
 import Style  from  './Footer.module.css';
-
+// import './Footer.module.css';
+import Image from 'next/image';
 
 function Footer() {
+
+  
+
   return (
     <>
     
-    {/* <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-      />
-      <link
-        href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-        rel="stylesheet"
-        id="bootstrap-css"
-      /> */}
     <footer id="dk-footer" className={Style.dkfooter}>
         <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-4">
               <div className={Style.dkfooterboxinfo}>
                 <a href="" className="footer-logo">
-                  <img src="https://cdn.pixabay.com/photo/2016/11/07/13/04/yoga-1805784_960_720.png" alt="footer_logo" className="img-fluid" />
+                  <Image src="" alt="footer_logo" className="img-fluid" width={100} height={100}/>
                 </a>
                 <p className={Style.footerinfotext}>
                   वसंतराव देसाई आजरा शेतकरी सहकारी साखर कारखाना लि. अमृतनगर-गवसे
@@ -76,7 +69,7 @@ function Footer() {
                         <a href="https://www.tenderdetail.com/government-tenders/ajara-shetkari-sahakari-sakhar-karkahana-limited-tenders/1?agid=13506">Tender Log</a>
                       </li>
                       <li>
-                        <a href="/login-page/index.html">Logout</a>
+                        {/* <a href="/login-page/index.html">Logout</a> */}
                       </li>
                     </ul>
                   </div>

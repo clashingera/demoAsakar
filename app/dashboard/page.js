@@ -3,7 +3,7 @@
 import Table from "../components/Table/Table";
 import Navbar from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import postService from '@/app/appwrite/config'
+import postService from '@/app/_appwrite/config'
 import Loader from "../components/Loader/Loader";
 import Style from "./page.module.css"
 import FilterButton from "../components/FilterButton/FilterButton";

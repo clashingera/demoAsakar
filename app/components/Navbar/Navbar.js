@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import authService from '@/app/appwrite/auth';
+import authService from '@/app/_appwrite/auth';
 import { useRouter } from 'next/navigation'
 
 

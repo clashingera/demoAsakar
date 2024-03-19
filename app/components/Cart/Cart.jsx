@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
-import postService from "@/app/appwrite/config";
+import postService from "@/app/_appwrite/config";
 import {useRouter } from "next/navigation";
 
 export default function FormDialog({styles, data, setTableData}) {

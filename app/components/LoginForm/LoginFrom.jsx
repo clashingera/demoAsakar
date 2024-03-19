@@ -1,8 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/navigation';
 import {useDispatch } from 'react-redux';
-import authService from "@/app/appwrite/auth"
-import { login as authLogin } from '@/app/store/authSlice';
+import authService from "@/app/_appwrite/auth"
+import { login as authLogin } from '@/app/_store/authSlice';
 import { useState } from 'react';
 import styles from './Login.module.css';
 

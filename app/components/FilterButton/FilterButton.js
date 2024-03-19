@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import postService from '@/app/appwrite/config'
+import postService from '@/app/_appwrite/config'
 import { useRouter } from 'next/navigation';
 
 function FilterButton({Style, setTableData}) {

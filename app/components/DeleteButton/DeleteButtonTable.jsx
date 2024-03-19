@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./DeleteButtonTable.module.css";
-import postService from "@/app/appwrite/config";
+import postService from "@/app/_appwrite/config";
 import { usePathname, useRouter } from "next/navigation";
 // import { setTableData } from "@/app/store/tableSlice";
 

@@ -8,6 +8,14 @@
     color:white;
     line-height: 28px;
   }
+
+  .row{
+    background-color: #007bff;
+  }
+
+  .container{
+    background-color: #fff;
+  }
   
    .animateborder {
   position: relative;

@@ -3,7 +3,7 @@ import DeleteButton from "../components/DeleteButton/DeleteButton";
 import Navbar from "../components/Navbar/Navbar";
 import Table from "../components/Table/Table";
 import { useEffect, useState } from "react";
-import postService from "@/app/appwrite/config";
+import postService from "@/app/_appwrite/config";
 import Loader from "../components/Loader/Loader";
 import {Audio} from "react-loader-spinner"
 

@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import styles from "./form.module.css";
-import postService from "@/app/appwrite/config";
+import postService from "@/app/_appwrite/config";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 function Form({setTableData}) {
 
@@ -248,7 +249,7 @@ function Form({setTableData}) {
       </div>
 
       <div className={styles.logoContainer}>
-        <img src="/img/logo.jpg" alt="Company Logo" className={styles.logo} />
+        <Image src="/img/logo.jpg" alt="Company Logo" width={100} height={150} className={styles.logo} />
       </div>
 
       <div className={styles.expenseTracker}>

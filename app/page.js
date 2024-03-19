@@ -7,10 +7,10 @@ import Form from "./components/Form/Form";
 import styles from "./page.module.css";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import authService from "./appwrite/auth";
-import { login, logout } from "./store/authSlice";
+import authService from "./_appwrite/auth";
+import { login, logout } from "./_store/authSlice";
 import { useRouter } from "next/navigation";
-import postService from "@/app/appwrite/config";
+import postService from "@/app/_appwrite/config";
 import Loader from "./components/Loader/Loader";
 // import { useSelector } from "react-redux";
 // import { setTableData } from "@/app/store/tableSlice";
@@ -39,7 +39,7 @@ const Home = () => {
         }
       })
       .finally(() => setLoading(false));
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     postService
