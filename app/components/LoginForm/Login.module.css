@@ -15,7 +15,7 @@
 .logocontainer {
     position: fixed;
     z-index: 2;
-    top:19vh;
+    top:7%;
     opacity: 0.9;
     transition: opacity 0.3s ease;
     
@@ -35,7 +35,7 @@
     width: 246px;
     height: 320px;
     position: absolute;
-    top: 30vh;
+    top: 20%;
     opacity: 0.8;
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
@@ -49,7 +49,7 @@
     font-size: 1.9rem;
     font-weight: bold;
     text-align: center;
-    margin-top: 58px;
+    margin-top: 76px;
     
     color: #333;
 }

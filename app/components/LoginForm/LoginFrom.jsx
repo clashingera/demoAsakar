@@ -38,25 +38,45 @@ function LoginFrom() {
     }
 
   return (
-    <div>
-      <h1>LOGIN</h1>
-      <form onSubmit={handelLogin} >
-        <input
-          type="email"
-          placeholder="Email"
-          value={data.email}
-          onChange={(e) => setData(p => ({...p, email : e.target.value}))}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={data.password}
-          onChange={(e) => setData(p => ({...p, password : e.target.value}))}
-        />
-        <button type='submit'>
-          Login
-        </button>
-      </form>
+    <div className={styles.loginbody}>
+      <div className={styles.logocontainer}>
+         <img src="/img/logo.jpg" alt="logo"/>
+      </div>
+      <div className={styles.logincontainer}>
+        <h2 className={styles.logintitle}>LOGIN</h2>
+        <form className={styles.loginform} onSubmit={handelLogin} >
+
+
+          <div className={styles.logininputgroup}>
+            <label for="password" className={styles.loginlabel}>Password</label>
+            <input
+              className={styles.logininput}
+              type="email"
+              placeholder="Email"
+              value={data.email}
+              onChange={(e) => setData(p => ({...p, email : e.target.value}))}
+            />
+          </div> 
+
+          <div className={styles.logininputgroup}>
+            <label for="password" className={styles.loginlabel}>Password</label>
+
+            <input
+              className={styles.logininput}
+              type="password"
+              placeholder="Password"
+              value={data.password}
+              onChange={(e) => setData(p => ({...p, password : e.target.value}))}
+            />
+          </div>
+
+          <button className={styles.loginbutton} type='submit'>
+            Login
+          </button>
+        </form>
+
+      </div>
+
       {errors && <p>{errors}</p>}       
     </div>
 //     <>

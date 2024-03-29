@@ -21,7 +21,7 @@ function Table({ tableData, tag, setTableData }) {
           <table border="1" className={styles.myExpense}>
             <tbody>
               <tr>
-                <th colSpan="9">MY Expenses</th>
+                <th colSpan="8">MY Expenses</th>
               </tr>
               <tr>
                 <th>Date</th>

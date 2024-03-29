@@ -11,13 +11,13 @@ function Footer() {
   return (
     <>
     
-    <footer id="dk-footer" className={Style.dkfooter}>
-        <div className="container">
+    <footer id="dk-footer" >
+        {/* <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-4">
               <div className={Style.dkfooterboxinfo}>
                 <a href="" className="footer-logo">
-                  <Image src="" alt="footer_logo" className="img-fluid" width={100} height={100}/>
+                  <Image src="/img/logo.jpg" alt="footer_logo" className="img-fluid" width={100} height={100}/>
                 </a>
                 <p className={Style.footerinfotext}>
                   वसंतराव देसाई आजरा शेतकरी सहकारी साखर कारखाना लि. अमृतनगर-गवसे
@@ -69,7 +69,6 @@ function Footer() {
                         <a href="https://www.tenderdetail.com/government-tenders/ajara-shetkari-sahakari-sakhar-karkahana-limited-tenders/1?agid=13506">Tender Log</a>
                       </li>
                       <li>
-                        {/* <a href="/login-page/index.html">Logout</a> */}
                       </li>
                     </ul>
                   </div>
@@ -77,7 +76,7 @@ function Footer() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={Style.copyright1}>
           <div className={Style.container1}>
             <div className="row">
