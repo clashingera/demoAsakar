@@ -48,7 +48,7 @@ function LoginFrom() {
 
 
           <div className={styles.logininputgroup}>
-            <label for="password" className={styles.loginlabel}>Password</label>
+            <label for="Email" className={styles.loginlabel}>Email-Id</label>
             <input
               className={styles.logininput}
               type="email"
